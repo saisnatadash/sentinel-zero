@@ -30,6 +30,25 @@ with Odisha.
 
 Full details: [docs/methodology.md](docs/methodology.md).
 
+## What's new in v0.2: ten features
+
+All features run on **synthetic data**. Results show how the logic behaves on designed cases. They are not accuracy measurements.
+
+| # | Feature | What it does |
+|---|---|---|
+| 1 | **Invisible risk mapping** | Finds water-supply places where the risk is meaningful but the evidence is stale, missing or weak. |
+| 2 | **Failure-path reasoning** | If a stage fails, shows which downstream places are affected and how many stages away they are. |
+| 3 | **Next-best-test planner** | Under a fixed testing budget, recommends which places to test next and explains why. |
+| 4 | **Jajpur 2025 timeline replay** | Replays a synthetic timeline shaped by reported milestones, to compare timing against a simple rule. |
+| 5 | **Comparison with a simple rule** | Runs the same scenarios through a basic "5 reports in 24 hours" alert and counts false alarms. |
+| 6 | **"What would change this verdict"** | Lists the evidence that would weaken or strengthen each flagged cluster. |
+| 7 | **Hindi and Odia understanding** | Classifies and checks negation in English, Hindi and Odia reports. Keyword lists need native-speaker review. |
+| 8 | **Exports** | Downloads clusters as CSV and an investigation brief as Markdown. |
+| 9 | **Privacy by design** | Rounds locations to about 1 km in outputs and exports. |
+| 10 | **Five-view dashboard** | Threat map, water network, replay, comparison and export, with a logo and a clear synthetic-data banner. |
+
+Method details: [docs/features.md](docs/features.md).
+
 ## Quick start
 
 Requires Python 3.11 or later.
@@ -50,7 +69,7 @@ Open <http://localhost:8000> and choose a scenario.
 python -m pytest -q
 ```
 
-Expected: `8 passed`.
+Expected: `27 passed`.
 
 ### Regenerate the sample data
 

@@ -39,3 +39,16 @@ India's surveillance system (IDSP) relied on weekly paper-based reporting before
 near-real-time reporting through IDSP-IHIP. Official responses to the June 2025 Jajpur outbreak
 also disagreed on cause and magnitude. SENTINEL ZERO is designed to support the slow, verified
 process, not to replace it.
+
+## Added in v0.2
+
+- **Replay has no background data.** Jajpur's baseline is almost empty, so the anomaly score is high for
+  any cluster. Timing results are a mechanism demonstration only.
+- **Hindi and Odia keyword lists are unreviewed.** Native-speaker checks are needed before any real reports
+  are processed.
+- **The water-network comparison is designed.** The hidden contamination and the network are chosen to show
+  the mechanism. Results on one invented network are not evidence of superiority.
+- **The baseline is deliberately naive.** Comparing against a stronger existing system (such as a standard
+  surveillance threshold used by health departments) is still needed before any claim of improvement.
+- **Greedy planning is not optimal.** The next-best-test planner is a greedy heuristic. It does not guarantee
+  the best plan under the budget.
