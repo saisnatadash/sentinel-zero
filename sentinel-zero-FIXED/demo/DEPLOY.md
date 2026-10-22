@@ -68,6 +68,7 @@ Render builds the `Dockerfile` in your repository and gives you a public `https:
    - **Region:** Singapore or the closest option
    - **Branch:** `main`
    - **Runtime:** Docker (Render detects the `Dockerfile` automatically)
+   - **Root Directory:** `sentinel-zero-FIXED` (the `Dockerfile` is inside this folder, not at the repository root)
    - **Instance type:** Free
 5. Click **Create Web Service**. The first build takes a few minutes. Watch the logs; you should see
    `Application startup complete` followed by `Uvicorn running`.
