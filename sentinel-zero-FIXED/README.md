@@ -30,7 +30,7 @@ with Odisha.
 
 Full details: [docs/methodology.md](docs/methodology.md).
 
-## What's new in v0.2: ten features
+## What's new in v0.3 and v0.2: ten features
 
 All features run on **synthetic data**. Results show how the logic behaves on designed cases. They are not accuracy measurements.
 
@@ -45,7 +45,7 @@ All features run on **synthetic data**. Results show how the logic behaves on de
 | 7 | **Hindi and Odia understanding** | Classifies and checks negation in English, Hindi and Odia reports. Keyword lists need native-speaker review. |
 | 8 | **Exports** | Downloads clusters as CSV and an investigation brief as Markdown. |
 | 9 | **Privacy by design** | Rounds locations to about 1 km in outputs and exports. |
-| 10 | **Five-view dashboard** | Threat map, water network, replay, comparison and export, with a logo and a clear synthetic-data banner. |
+| 10 | **Live feed and dashboard** | Community posts are classified, de-duplicated and clustered as they arrive. A dashboard shows charts over time, by tier, by locality and against the thresholds. The threat map shades each cluster by tier. |
 
 Method details: [docs/features.md](docs/features.md).
 
@@ -87,6 +87,11 @@ This writes `data/sample_reports.csv` and `data/sample_labs.csv`.
 | GET | `/api/scenarios` | List synthetic scenarios |
 | GET | `/api/scenarios/{name}` | Run one scenario (reports, labs and result) |
 | POST | `/api/analyze` | Analyse your own JSON payload (see `app/models.py`) |
+| GET | `/api/live` | Live community feed: posts, clusters and flags (in memory) |
+| POST | `/api/live/report` | Post a community report (`text`, `locality`, optional `source_id`) |
+| POST | `/api/live/simulate` | Add synthetic demonstration posts (`locality`, `n` up to 20) |
+| DELETE | `/api/live` | Clear the live feed |
+| GET | `/api/localities` | Localities the feed accepts |
 | GET | `/api/methodology` | Weights, thresholds and caps |
 
 Interactive API documentation is available at `/docs`.

@@ -52,3 +52,14 @@ process, not to replace it.
   surveillance threshold used by health departments) is still needed before any claim of improvement.
 - **Greedy planning is not optimal.** The next-best-test planner is a greedy heuristic. It does not guarantee
   the best plan under the budget.
+
+## Added in v0.3: live community feed
+
+- **Posts are not moderated.** Anyone can post text. Spam, false reports and abuse are not filtered beyond exact-duplicate checks.
+- **Storage is in memory.** The feed holds at most 500 posts and is cleared when the server restarts. It is not a record system.
+- **Posts are placed at the locality centre.** Each post is given a random offset of about 0.5 km. Real posts would need a
+  proper location method and privacy checks before any public display.
+- **Source identifiers are pseudonymised in the feed**, but the server still sees the submitted identifier in memory.
+- **The live feed is not an alert service.** A flag means a pattern to check. Nothing is sent to authorities.
+- **Simulated posts are labelled as synthetic** in the demonstration controls. Do not mix them with real posts in any
+  real deployment.

@@ -191,7 +191,7 @@ def _build_cluster(members, relevant, labs, span_days) -> dict:
     centroid = {"lat": round(sum(m.lat for m in members) / n, COORDINATE_DECIMALS),
                 "lon": round(sum(m.lon for m in members) / n, COORDINATE_DECIMALS)}
     explanation = (
-        f"{n} reports from {k} independent source(s) in {locality} over {window_hours:.0f} hours. "
+        f"{n} reports from {k} independent source(s) in {locality} over {window_hours:.0f} hour(s). "
         f"Anomaly {scored['factors']['anomaly']:.2f} against baseline; "
         f"laboratory evidence {'positive' if positive else 'negative' if negative else 'not available'}."
     )

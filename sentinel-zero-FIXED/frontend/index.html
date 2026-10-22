@@ -17,14 +17,15 @@
   header small { opacity:.85; display:block; font-size:13px; margin-top:2px; }
   .banner { background:#FEF0C7; padding:8px 20px; font-size:14px; border-bottom:1px solid #F5C451; }
   nav { display:flex; gap:6px; padding:10px 20px; flex-wrap:wrap; border-bottom:1px solid var(--line); background:var(--soft); }
-  nav button, .pill { padding:8px 14px; border:1px solid var(--navy); background:#fff; color:var(--navy); border-radius:999px; cursor:pointer; font-size:14px; text-decoration:none; }
+  nav button, .pill { padding:8px 14px; border:1px solid var(--navy); background:#fff; color:var(--navy); border-radius:999px; cursor:pointer; font-size:14px; }
   nav button.on, .pill.on { background:var(--navy); color:#fff; }
   section { padding:14px 20px; }
   section[hidden] { display:none; }
-  .lead { color:var(--grey); font-size:14px; margin:0 0 10px; }
+  .lead { color:var(--grey); font-size:14px; margin:0 0 10px; max-width:880px; }
   .grid { display:grid; grid-template-columns: 1fr 380px; gap:16px; }
-  .panel { border:1px solid var(--line); border-radius:12px; padding:14px; background:#fff; }
-  .stats { display:grid; grid-template-columns: repeat(3,1fr); gap:8px; margin-bottom:10px; }
+  .charts { display:grid; grid-template-columns: 1fr 1fr; gap:16px; }
+  .panel { border:1px solid var(--line); border-radius:12px; padding:14px; background:#fff; min-width:0; }
+  .stats { display:grid; grid-template-columns: repeat(4,1fr); gap:8px; margin-bottom:12px; }
   .stat { border:1px solid var(--line); border-radius:10px; padding:8px; text-align:center; }
   .stat b { display:block; font-size:22px; color:var(--navy); }
   .stat small { color:#667085; font-size:12px; }
@@ -36,6 +37,7 @@
   .factors { font-size:12px; color:var(--grey); margin:4px 0 6px; }
   ul { margin:6px 0 6px 18px; padding:0; font-size:14px; } li { margin-bottom:4px; }
   h4 { margin:12px 0 4px; color:var(--navy); font-size:14px; }
+  h3 { margin:0 0 4px; }
   .caps { color:var(--amber); font-size:13px; }
   table { width:100%; border-collapse:collapse; font-size:14px; }
   th, td { text-align:left; padding:7px 8px; border-bottom:1px solid var(--line); vertical-align:top; }
@@ -45,11 +47,27 @@
   .node-legend span { display:inline-block; margin-right:12px; font-size:13px; }
   .dot { display:inline-block; width:12px; height:12px; border-radius:50%; margin-right:4px; vertical-align:middle; }
   .toolbar { display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-bottom:10px; }
-  select { padding:6px 10px; border-radius:8px; border:1px solid var(--line); font-size:14px; }
+  select, input, textarea { padding:6px 10px; border-radius:8px; border:1px solid var(--line); font-size:14px; font-family:inherit; }
+  textarea { width:100%; resize:vertical; }
+  button.pill { cursor:pointer; }
+  button.action { padding:8px 14px; border-radius:8px; border:0; background:var(--navy); color:#fff; cursor:pointer; font-size:14px; }
+  button.action.light { background:#fff; color:var(--navy); border:1px solid var(--navy); }
   a.btn { display:inline-block; margin:4px 6px 4px 0; padding:8px 14px; background:var(--navy); color:#fff; border-radius:8px; text-decoration:none; font-size:14px; }
+  .tag { display:inline-block; padding:1px 8px; border-radius:999px; color:#fff; font-size:12px; margin-right:6px; }
+  .feed-item { border-bottom:1px solid var(--line); padding:8px 0; font-size:14px; }
+  .feed-item small { color:var(--grey); }
+  .flag-note { background:var(--soft); border-radius:8px; padding:10px; font-size:13px; color:var(--grey); }
   svg text { font-family: system-ui, Arial, sans-serif; }
-  #map { height: 520px; border-radius:12px; }
-  @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } #map { height: 380px; } }
+  svg { max-width:100%; height:auto; }
+  #map { height: 540px; border-radius:12px; }
+  .map-legend { background:#fff; padding:8px 10px; border-radius:8px; font-size:12px; line-height:1.7; box-shadow:0 1px 4px rgba(0,0,0,.25); }
+  .map-legend .sw { display:inline-block; width:12px; height:12px; border-radius:3px; margin-right:6px; vertical-align:middle; }
+  @media (max-width: 900px) {
+    .grid, .charts { grid-template-columns: 1fr; }
+    .stats { grid-template-columns: repeat(2,1fr); }
+    #map { height: 400px; }
+    section { padding:12px 16px; }
+  }
 </style>
 </head>
 <body>
@@ -60,19 +78,92 @@
     <small>Detect the signal. Verify the threat. Enable earlier action. · Team Sentinel · HSC|OR|00060 · Odisha</small>
   </div>
 </header>
-<div class="banner"><b>Synthetic demonstration data only.</b> Output flags patterns for human investigation. It does not confirm outbreaks or certify water safety.</div>
+<div class="banner"><b>Prototype.</b> Scenarios and simulated posts are synthetic. Live posts are kept in memory and are not moderated. Output flags patterns for human investigation. It does not confirm outbreaks or certify water safety.</div>
 
 <nav>
-  <button class="on" data-tab="map">1 · Threat map</button>
-  <button data-tab="water">2 · Water network</button>
-  <button data-tab="replay">3 · Jajpur replay</button>
-  <button data-tab="compare">4 · Compare methods</button>
-  <button data-tab="export">5 · Export</button>
+  <button class="on" data-tab="live">1 · Live reports</button>
+  <button data-tab="dash">2 · Dashboard</button>
+  <button data-tab="map">3 · Threat map</button>
+  <button data-tab="water">4 · Water network</button>
+  <button data-tab="replay">5 · Jajpur replay</button>
+  <button data-tab="compare">6 · Compare methods</button>
+  <button data-tab="export">7 · Export</button>
 </nav>
 
-<!-- 1. THREAT MAP -->
-<section data-panel="map">
-  <p class="lead">Choose a scenario. Each one runs through the same pipeline. Reports are read in English, Hindi and Odia.</p>
+<!-- 1. LIVE REPORTS -->
+<section data-panel="live">
+  <p class="lead">Post what you are seeing in your community. Each post is read in English, Hindi or Odia, checked for duplicates, grouped with nearby posts and scored. A flag means the pattern needs checking. It is not a confirmed outbreak. This page refreshes every 10 seconds.</p>
+  <div class="stats" id="liveStats"></div>
+  <div class="grid">
+    <div>
+      <div class="panel">
+        <h4>Post a report</h4>
+        <form id="postForm">
+          <div class="toolbar">
+            <label>Locality <select id="liveLocality"></select></label>
+          </div>
+          <textarea id="liveText" rows="3" maxlength="280" placeholder="For example: water smells bad near our tap"></textarea>
+          <div class="toolbar" style="margin:8px 0 0">
+            <button class="action" type="submit">Post report</button>
+            <span class="note" id="postStatus"></span>
+          </div>
+        </form>
+      </div>
+      <div class="panel" style="margin-top:14px">
+        <h4>Demonstration controls</h4>
+        <p class="note">Simulated posts are synthetic and labelled as such. Use them to show how a cluster forms.</p>
+        <div class="toolbar">
+          <button class="action light" id="simBtn" type="button">Add 6 simulated posts to Jajpur</button>
+          <button class="action light" id="clearBtn" type="button">Clear live feed</button>
+        </div>
+      </div>
+    </div>
+    <div class="panel">
+      <h4>Live flags</h4>
+      <div id="liveFlags"></div>
+    </div>
+  </div>
+  <div class="panel" style="margin-top:14px">
+    <h4>Live feed (newest first)</h4>
+    <div id="liveFeed"></div>
+  </div>
+</section>
+
+<!-- 2. DASHBOARD -->
+<section data-panel="dash" hidden>
+  <p class="lead">Charts for the selected data. Choose the live feed to watch it fill up, or a scenario to see a designed case.</p>
+  <div class="toolbar">
+    <label>Data <select id="dashSource"></select></label>
+    <span class="note" id="dashNote"></span>
+  </div>
+  <div class="stats" id="dashStats"></div>
+  <div class="charts">
+    <div class="panel">
+      <h4>Reports over time</h4>
+      <p class="note">Each bar is one time interval. Colour shows the report type.</p>
+      <svg id="chTime" width="100%" role="img" aria-label="Reports over time, by type"></svg>
+    </div>
+    <div class="panel">
+      <h4>Flags by tier</h4>
+      <p class="note">Number of clusters at each level.</p>
+      <svg id="chTier" width="100%" role="img" aria-label="Flags by tier"></svg>
+    </div>
+    <div class="panel">
+      <h4>Reports by locality</h4>
+      <p class="note">Total reports per locality, coloured by type.</p>
+      <svg id="chLoc" width="100%" role="img" aria-label="Reports by locality"></svg>
+    </div>
+    <div class="panel">
+      <h4>Confidence per cluster</h4>
+      <p class="note">Dashed lines mark the Watch and Investigate thresholds.</p>
+      <svg id="chConf" width="100%" role="img" aria-label="Confidence per cluster"></svg>
+    </div>
+  </div>
+</section>
+
+<!-- 3. THREAT MAP -->
+<section data-panel="map" hidden>
+  <p class="lead">Choose a scenario or the live feed. Shaded areas are clusters, coloured by tier and shaded more strongly when confidence is higher. Dots are reports, coloured by type. Hollow circles are laboratory results.</p>
   <div class="toolbar" id="scenarioButtons"></div>
   <div class="grid">
     <div id="map"></div>
@@ -80,7 +171,7 @@
   </div>
 </section>
 
-<!-- 2. WATER NETWORK -->
+<!-- 4. WATER NETWORK -->
 <section data-panel="water" hidden>
   <p class="lead">A simulated water network: source → plant → storage tanks → distribution points. Tap a place to see how the risk is built and what it would affect downstream. Dashed outline = evidence is stale or missing.</p>
   <div class="toolbar">
@@ -112,7 +203,7 @@
   <p class="note" id="netDisclaimer"></p>
 </section>
 
-<!-- 3. REPLAY -->
+<!-- 5. REPLAY -->
 <section data-panel="replay" hidden>
   <p class="lead" id="replayLabel"></p>
   <div class="grid">
@@ -134,7 +225,7 @@
   <div class="panel" style="margin-top:14px"><table id="replayTable"></table></div>
 </section>
 
-<!-- 4. COMPARE -->
+<!-- 6. COMPARE -->
 <section data-panel="compare" hidden>
   <p class="lead">The same five scenarios run through the full system and through a simple rule (5 relevant reports in 24 hours). Only one scenario is a real-style cluster.</p>
   <div class="panel"><table id="compareTable"></table></div>
@@ -143,7 +234,7 @@
   <div class="panel"><table id="strategyTable"></table></div>
 </section>
 
-<!-- 5. EXPORT -->
+<!-- 7. EXPORT -->
 <section data-panel="export" hidden>
   <p class="lead">Download results for an official or a reviewer. Coordinates are rounded to about 1 km.</p>
   <div class="panel" id="exportList"></div>
@@ -153,7 +244,12 @@
 <script>
 const NS = 'http://www.w3.org/2000/svg';
 const TIER_COLOUR = { 'Investigate': '#B42318', 'Watch': '#B54708', 'Insufficient evidence': '#475467' };
-let waterData = null;
+const TIERS = ['Investigate', 'Watch', 'Insufficient evidence'];
+const CAT_COLOUR = { water_odour: '#7A2E9E', water_colour: '#0E7490', diarrhoea_symptoms: '#DD2590', other: '#98A2B3' };
+const CAT_LABEL = { water_odour: 'Water smell', water_colour: 'Water colour', diarrhoea_symptoms: 'Diarrhoea symptoms', other: 'Other' };
+const CATS = ['water_odour', 'water_colour', 'diarrhoea_symptoms', 'other'];
+const REFRESH_MS = 10000;
+let waterData = null, thresholds = { watch: 0.35, investigate: 0.6 }, currentTab = 'live';
 
 function el(tag, text, cls) {
   const node = document.createElement(tag);
@@ -189,56 +285,348 @@ function fillTable(table, headers, rows) {
     table.appendChild(tr);
   });
 }
-async function getJSON(url) { const r = await fetch(url); if (!r.ok) throw new Error(url + ' ' + r.status); return r.json(); }
+async function getJSON(url, options) {
+  const r = await fetch(url, options);
+  if (!r.ok) throw new Error(url + ' ' + r.status);
+  return r.json();
+}
+function timeLabel(iso) {
+  return new Date(iso).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+}
 
 /* ---------- tabs ---------- */
 document.querySelectorAll('nav button').forEach(b => b.onclick = () => show(b.dataset.tab));
 function show(tab) {
+  currentTab = tab;
   document.querySelectorAll('section[data-panel]').forEach(s => s.hidden = s.dataset.panel !== tab);
   document.querySelectorAll('nav button').forEach(b => b.classList.toggle('on', b.dataset.tab === tab));
+  if (tab === 'live') loadLive();
+  if (tab === 'dash') loadDash();
   if (tab === 'map' && map) setTimeout(() => map.invalidateSize(), 50);
   if (tab === 'water') loadWater();
   if (tab === 'replay') loadReplay();
   if (tab === 'compare') loadCompare();
   if (tab === 'export') loadExport();
 }
+setInterval(() => {
+  if (currentTab === 'live') loadLive().catch(() => {});
+  if (currentTab === 'dash' && document.getElementById('dashSource').value === 'live') loadDash().catch(() => {});
+}, REFRESH_MS);
 
-/* ---------- 1. threat map ---------- */
-let map = null, layer = null;
+/* ---------- 1. live reports ---------- */
+const SOURCE = 'citizen-' + Math.random().toString(36).slice(2, 8);   // pseudonymous, per browser session
+
+async function loadLive() {
+  const d = await getJSON('/api/live');
+  const s = d.result.summary;
+  const sources = new Set(d.reports.map(r => r.source_id)).size;
+  const stats = document.getElementById('liveStats'); clear(stats);
+  [[d.total_posts, 'Posts'], [sources, 'Distinct sources'], [s.clusters, 'Clusters'], [s.investigate_count + s.watch_count, 'Flags (Investigate or Watch)']]
+    .forEach(([v, label]) => { const b = el('div', undefined, 'stat'); b.appendChild(el('b', String(v))); b.appendChild(el('small', label)); stats.appendChild(b); });
+
+  const feed = document.getElementById('liveFeed'); clear(feed);
+  if (!d.reports.length) feed.appendChild(el('p', 'No posts yet. Be the first to post a report.', 'note'));
+  d.reports.slice().reverse().slice(0, 25).forEach(r => {
+    const row = el('div', undefined, 'feed-item');
+    const tag = el('span', CAT_LABEL[r.category], 'tag');
+    tag.style.background = CAT_COLOUR[r.category] || CAT_COLOUR.other;
+    row.appendChild(tag);
+    row.appendChild(el('b', r.locality + ' '));
+    row.appendChild(el('small', timeLabel(r.timestamp) + ' · ' + r.source_id));
+    row.appendChild(el('div', r.text));
+    feed.appendChild(row);
+  });
+
+  const flags = document.getElementById('liveFlags'); clear(flags);
+  if (!d.result.clusters.length) {
+    flags.appendChild(el('div', 'No cluster yet. A flag needs at least four posts from distinct sources close together in space and time.', 'flag-note'));
+  } else {
+    clusterCards(d.result, flags);
+  }
+}
+
+async function loadLocalities() {
+  const names = await getJSON('/api/localities');
+  const sel = document.getElementById('liveLocality');
+  names.forEach(n => sel.appendChild(el('option', n)));
+}
+
+document.getElementById('postForm').onsubmit = async (e) => {
+  e.preventDefault();
+  const text = document.getElementById('liveText').value.trim();
+  const status = document.getElementById('postStatus');
+  if (text.length < 3) { status.textContent = 'Please write a few words.'; return; }
+  try {
+    const res = await getJSON('/api/live/report', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text, locality: document.getElementById('liveLocality').value, source_id: SOURCE }),
+    });
+    status.textContent = 'Posted. Read as: ' + CAT_LABEL[res.category] + '.';
+    document.getElementById('liveText').value = '';
+    loadLive();
+  } catch (err) {
+    status.textContent = 'Could not post. Please try again.';
+  }
+};
+document.getElementById('simBtn').onclick = async () => {
+  await getJSON('/api/live/simulate?locality=Jajpur&n=6', { method: 'POST' });
+  loadLive();
+};
+document.getElementById('clearBtn').onclick = async () => {
+  await getJSON('/api/live', { method: 'DELETE' });
+  loadLive();
+};
+
+/* ---------- shared: cluster cards ---------- */
+function clusterCards(result, container) {
+  result.clusters.forEach(c => {
+    const card = el('div', undefined, 'card');
+    const head = el('div');
+    head.appendChild(el('span', c.tier, 'tier ' + (c.tier.startsWith('Insufficient') ? 'Insufficient' : c.tier)));
+    head.appendChild(el('b', '  ' + c.cluster_id + ' · ' + c.locality));
+    card.appendChild(head);
+    const bar = el('div', undefined, 'bar'); const fill = el('div'); fill.style.width = Math.round(c.confidence * 100) + '%';
+    fill.style.background = TIER_COLOUR[c.tier] || '#0077B6';
+    bar.appendChild(fill); card.appendChild(bar);
+    card.appendChild(el('small', 'Confidence ' + Math.round(c.confidence * 100) + '%'));
+    card.appendChild(el('p', c.explanation));
+    const f = c.factors;
+    card.appendChild(el('div', `Anomaly ${f.anomaly} · Independence ${f.independence} · Evidence ${f.evidence} · Consistency ${f.consistency}`, 'factors'));
+    c.caps.forEach(cap => card.appendChild(el('div', 'Capped: ' + cap, 'caps')));
+    card.appendChild(el('h4', 'Alternative explanations')); card.appendChild(list(c.alternative_explanations));
+    card.appendChild(el('h4', 'What would change this verdict')); card.appendChild(list(c.what_would_change_verdict));
+    card.appendChild(el('h4', 'Suggested verification')); card.appendChild(list(c.verification_steps));
+    container.appendChild(card);
+  });
+  if (result.duplicates.length) {
+    container.appendChild(el('h4', 'Duplicates removed (' + result.duplicates.length + ')'));
+    container.appendChild(list(result.duplicates.slice(0, 8).map(d => `${d.duplicate_id} duplicates ${d.duplicate_of}`)));
+  }
+}
+
+/* ---------- 2. dashboard ---------- */
+function svgSetup(svgEl, W, H) { clear(svgEl); svgEl.setAttribute('viewBox', `0 0 ${W} ${H}`); return svgEl; }
+function svgNoData(svgEl, msg) {
+  svgSetup(svgEl, 600, 120);
+  svgEl.appendChild(svg('text', { x: 300, y: 64, 'text-anchor': 'middle', fill: '#667085', 'font-size': 14 }, msg));
+}
+function svgLegend(svgEl, y, items) {
+  let x = 40;
+  items.forEach(([colour, label]) => {
+    svgEl.appendChild(svg('rect', { x, y: y - 10, width: 12, height: 12, rx: 3, fill: colour }));
+    svgEl.appendChild(svg('text', { x: x + 17, y, 'font-size': 12, fill: '#344054' }, label));
+    x += 34 + label.length * 6.6;
+  });
+}
+
+function drawTimeChart(svgEl, reports) {
+  if (!reports.length) return svgNoData(svgEl, 'No reports yet.');
+  const t = reports.map(r => Date.parse(r.timestamp));
+  const t0 = Math.min(...t), t1 = Math.max(...t);
+  const bucket = Math.max(60000, Math.ceil(((t1 - t0) || 60000) / 12 / 60000) * 60000);
+  const n = Math.floor((t1 - t0) / bucket) + 1;
+  const bins = Array.from({ length: n }, () => ({}));
+  reports.forEach((r, i) => { const b = Math.floor((t[i] - t0) / bucket); bins[b][r.category] = (bins[b][r.category] || 0) + 1; });
+  const totals = bins.map(b => Object.values(b).reduce((x, y) => x + y, 0));
+  const max = Math.max(...totals, 1);
+  const W = 600, H = 250, L = 44, R = 12, T = 14, B = 34;
+  const ph = H - T - B, pw = W - L - R, bw = pw / n;
+  svgSetup(svgEl, W, H + 40);
+  for (let k = 0; k <= 4; k++) {
+    const v = Math.round(max * k / 4), y = T + ph - ph * k / 4;
+    svgEl.appendChild(svg('line', { x1: L, x2: W - R, y1: y, y2: y, stroke: '#E4E7EC' }));
+    svgEl.appendChild(svg('text', { x: L - 6, y: y + 4, 'text-anchor': 'end', 'font-size': 11, fill: '#667085' }, String(v)));
+  }
+  bins.forEach((b, i) => {
+    let y = T + ph;
+    CATS.forEach(cat => {
+      const v = b[cat] || 0;
+      if (!v) return;
+      const h = ph * v / max; y -= h;
+      svgEl.appendChild(svg('rect', { x: L + i * bw + bw * 0.15, y, width: bw * 0.7, height: h, fill: CAT_COLOUR[cat] }));
+    });
+    if (n <= 12 || i % 2 === 0) {
+      svgEl.appendChild(svg('text', { x: L + i * bw + bw / 2, y: T + ph + 15, 'text-anchor': 'middle', 'font-size': 11, fill: '#344054' },
+        new Date(t0 + i * bucket).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })));
+    }
+  });
+  svgLegend(svgEl, H + 22, CATS.map(c => [CAT_COLOUR[c], CAT_LABEL[c]]));
+}
+
+function drawTierChart(svgEl, clusters) {
+  const counts = TIERS.map(t => clusters.filter(c => c.tier === t).length);
+  const max = Math.max(...counts, 1);
+  svgSetup(svgEl, 600, 190);
+  TIERS.forEach((t, i) => {
+    const y = 26 + i * 52, w = counts[i] / max * 330;
+    svgEl.appendChild(svg('text', { x: 4, y: y + 5, 'font-size': 13, fill: '#101828' }, t));
+    if (counts[i]) svgEl.appendChild(svg('rect', { x: 190, y: y - 12, width: Math.max(w, 4), height: 24, rx: 5, fill: TIER_COLOUR[t] }));
+    svgEl.appendChild(svg('text', { x: 190 + Math.max(w, 4) + 8, y: y + 5, 'font-size': 14, 'font-weight': 'bold', fill: '#101828' }, String(counts[i])));
+  });
+  if (!clusters.length) svgEl.appendChild(svg('text', { x: 190, y: 180, 'font-size': 12, fill: '#667085' }, 'No clusters flagged yet.'));
+}
+
+function drawLocalityChart(svgEl, reports) {
+  if (!reports.length) return svgNoData(svgEl, 'No reports yet.');
+  const byLoc = {};
+  reports.forEach(r => { const c = byLoc[r.locality] || (byLoc[r.locality] = {}); c[r.category] = (c[r.category] || 0) + 1; });
+  const rows = Object.entries(byLoc)
+    .map(([loc, c]) => [loc, c, Object.values(c).reduce((a, b) => a + b, 0)])
+    .sort((a, b) => b[2] - a[2]);
+  const max = rows[0][2];
+  const H = rows.length * 34 + 44;
+  svgSetup(svgEl, 600, H);
+  rows.forEach(([loc, c, tot], i) => {
+    const y = 14 + i * 34;
+    svgEl.appendChild(svg('text', { x: 4, y: y + 12, 'font-size': 13, fill: '#101828' }, loc));
+    let x = 150;
+    CATS.forEach(cat => {
+      const v = c[cat] || 0;
+      if (!v) return;
+      const w = v / max * 380;
+      svgEl.appendChild(svg('rect', { x, y, width: w, height: 22, fill: CAT_COLOUR[cat] }));
+      x += w;
+    });
+    svgEl.appendChild(svg('text', { x: x + 6, y: y + 15, 'font-size': 12, fill: '#344054' }, String(tot)));
+  });
+  svgLegend(svgEl, H - 8, CATS.map(c => [CAT_COLOUR[c], CAT_LABEL[c]]));
+}
+
+function drawConfChart(svgEl, clusters) {
+  if (!clusters.length) return svgNoData(svgEl, 'No cluster flagged yet.');
+  const W = 600, H = 250, L = 40, R = 12, T = 18, B = 34;
+  const ph = H - T - B, pw = W - L - R, bw = pw / clusters.length;
+  svgSetup(svgEl, W, H);
+  [0, 0.5, 1].forEach(v => {
+    const y = T + ph * (1 - v);
+    svgEl.appendChild(svg('line', { x1: L, x2: W - R, y1: y, y2: y, stroke: '#E4E7EC' }));
+    svgEl.appendChild(svg('text', { x: L - 6, y: y + 4, 'text-anchor': 'end', 'font-size': 11, fill: '#667085' }, Math.round(v * 100) + '%'));
+  });
+  [[thresholds.investigate, 'Investigate threshold', TIER_COLOUR.Investigate],
+   [thresholds.watch, 'Watch threshold', TIER_COLOUR.Watch]].forEach(([v, label, colour]) => {
+    const y = T + ph * (1 - v);
+    svgEl.appendChild(svg('line', { x1: L, x2: W - R, y1: y, y2: y, stroke: colour, 'stroke-dasharray': '6 4', 'stroke-width': 1.5 }));
+    svgEl.appendChild(svg('text', { x: W - R - 4, y: y - 4, 'text-anchor': 'end', 'font-size': 11, fill: colour }, label));
+  });
+  clusters.forEach((c, i) => {
+    const h = ph * c.confidence, x = L + i * bw + bw * 0.2, y = T + ph - h;
+    svgEl.appendChild(svg('rect', { x, y, width: bw * 0.6, height: h, rx: 4, fill: TIER_COLOUR[c.tier] }));
+    svgEl.appendChild(svg('text', { x: x + bw * 0.3, y: y - 5, 'text-anchor': 'middle', 'font-size': 12, 'font-weight': 'bold', fill: '#101828' }, Math.round(c.confidence * 100) + '%'));
+    svgEl.appendChild(svg('text', { x: x + bw * 0.3, y: T + ph + 15, 'text-anchor': 'middle', 'font-size': 11, fill: '#344054' }, c.cluster_id));
+  });
+}
+
+async function loadDash() {
+  const key = document.getElementById('dashSource').value;
+  const d = key === 'live'
+    ? await getJSON('/api/live')
+    : await getJSON('/api/scenarios/' + encodeURIComponent(key));
+  const s = d.result.summary;
+  document.getElementById('dashNote').textContent = d.description;
+  const stats = document.getElementById('dashStats'); clear(stats);
+  [[s.total_reports, 'Reports'], [s.duplicates_removed, 'Duplicates removed'], [s.clusters, 'Clusters'], [s.investigate_count, 'Investigate']]
+    .forEach(([v, label]) => { const b = el('div', undefined, 'stat'); b.appendChild(el('b', String(v))); b.appendChild(el('small', label)); stats.appendChild(b); });
+  drawTimeChart(document.getElementById('chTime'), d.reports);
+  drawTierChart(document.getElementById('chTier'), d.result.clusters);
+  drawLocalityChart(document.getElementById('chLoc'), d.reports);
+  drawConfChart(document.getElementById('chConf'), d.result.clusters);
+}
+
+/* ---------- 3. threat map ---------- */
+let map = null, layer = null, legendControl = null;
 if (window.L) {
   map = L.map('map').setView([20.5, 85.9], 8);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '&copy; OpenStreetMap contributors' }).addTo(map);
   layer = L.layerGroup().addTo(map);
+  legendControl = L.control({ position: 'bottomleft' });
+  legendControl.onAdd = () => {
+    const box = el('div', undefined, 'map-legend');
+    box.appendChild(el('b', 'Report type (dots)'));
+    CATS.forEach(c => {
+      const row = el('div'); const sw = el('span', undefined, 'sw'); sw.style.background = CAT_COLOUR[c];
+      row.appendChild(sw); row.appendChild(document.createTextNode(CAT_LABEL[c])); box.appendChild(row);
+    });
+    box.appendChild(el('b', 'Cluster tier (areas)'));
+    TIERS.forEach(t => {
+      const row = el('div'); const sw = el('span', undefined, 'sw'); sw.style.background = TIER_COLOUR[t];
+      row.appendChild(sw); row.appendChild(document.createTextNode(t)); box.appendChild(row);
+    });
+    return box;
+  };
+  legendControl.addTo(map);
 } else {
   document.getElementById('map').textContent = 'The map needs internet access to load OpenStreetMap. The other views work without it.';
+}
+
+/* Convex hull (monotone chain). Input [lon, lat]; output [lat, lon] for Leaflet. */
+function hull(points) {
+  const p = points.slice().sort((u, v) => u[0] - v[0] || u[1] - v[1]);
+  const uniq = p.filter((q, i) => i === 0 || q[0] !== p[i - 1][0] || q[1] !== p[i - 1][1]);
+  if (uniq.length < 3) return [];
+  const cross = (o, a, b) => (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0]);
+  const lower = [];
+  for (const q of uniq) { while (lower.length >= 2 && cross(lower[lower.length - 2], lower[lower.length - 1], q) <= 0) lower.pop(); lower.push(q); }
+  const upper = [];
+  for (let i = uniq.length - 1; i >= 0; i--) { const q = uniq[i]; while (upper.length >= 2 && cross(upper[upper.length - 2], upper[upper.length - 1], q) <= 0) upper.pop(); upper.push(q); }
+  lower.pop(); upper.pop();
+  return lower.concat(upper).map(([lon, lat]) => [lat, lon]);
+}
+/* Push hull vertices slightly outwards so single reports sit inside the shaded area. */
+function expand(poly, cLat, cLon, deg) {
+  return poly.map(([la, lo]) => {
+    const dx = lo - cLon, dy = la - cLat, d = Math.hypot(dx, dy) || 1;
+    return [la + dy / d * deg, lo + dx / d * deg];
+  });
 }
 
 async function loadScenarios() {
   const scenarios = await getJSON('/api/scenarios');
   const box = document.getElementById('scenarioButtons');
-  scenarios.forEach((s, i) => {
+  const live = el('button', 'Live feed', 'pill');
+  live.onclick = () => runView('/api/live', live);
+  box.appendChild(live);
+  scenarios.forEach(s => {
     const b = el('button', s.label, 'pill');
-    b.onclick = () => runScenario(s.name, b);
+    b.onclick = () => runView('/api/scenarios/' + encodeURIComponent(s.name), b);
     box.appendChild(b);
-    if (i === 0) runScenario(s.name, b);
   });
+  // Fill the dashboard's data selector with the same options.
+  const dsel = document.getElementById('dashSource');
+  dsel.appendChild(el('option', 'Live feed')).value = 'live';
+  scenarios.forEach(s => { const o = el('option', s.label); o.value = s.name; dsel.appendChild(o); });
+  runView('/api/scenarios/' + encodeURIComponent(scenarios[0].name), box.children[1]);
 }
-async function runScenario(name, button) {
+async function runView(url, button) {
   document.querySelectorAll('#scenarioButtons button').forEach(b => b.classList.remove('on'));
   if (button) button.classList.add('on');
-  render(await getJSON('/api/scenarios/' + encodeURIComponent(name)));
+  render(await getJSON(url));
 }
 function render(data) {
-  if (layer) layer.clearLayers();
   const result = data.result, summary = result.summary;
   if (layer) {
-  data.reports.forEach(r => L.circleMarker([r.lat, r.lon], { radius: 4, color: '#98a2b3', fillOpacity: .7, weight: 1 })
-    .bindTooltip(`${r.source_id}: ${r.text}`).addTo(layer));
-  data.labs.forEach(lab => L.marker([lab.lat, lab.lon]).bindTooltip(`Lab (${lab.result}): ${lab.agent}`).addTo(layer));
-  result.clusters.forEach(c => L.circle([c.centroid.lat, c.centroid.lon], {
-    radius: 900, color: TIER_COLOUR[c.tier], fillColor: TIER_COLOUR[c.tier], fillOpacity: .18, weight: 2
-  }).bindTooltip(`${c.cluster_id} · ${c.tier} · ${Math.round(c.confidence * 100)}%`).addTo(layer));
-  if (data.reports.length) map.fitBounds(L.latLngBounds(data.reports.map(r => [r.lat, r.lon])).pad(0.3));
+    layer.clearLayers();
+    const byId = {};
+    data.reports.forEach(r => byId[r.id] = r);
+    result.clusters.forEach(c => {
+      const colour = TIER_COLOUR[c.tier];
+      const opacity = 0.12 + 0.35 * c.confidence;
+      const label = `${c.cluster_id} · ${c.locality} · ${c.tier} · ${Math.round(c.confidence * 100)}%`;
+      const pts = c.report_ids.map(id => byId[id]).filter(Boolean).map(r => [r.lon, r.lat]);
+      const poly = hull(pts);
+      if (poly.length >= 3) {
+        L.polygon(expand(poly, c.centroid.lat, c.centroid.lon, 0.003),
+          { color: colour, fillColor: colour, fillOpacity: opacity, weight: 2 }).bindTooltip(label).addTo(layer);
+      } else {
+        L.circle([c.centroid.lat, c.centroid.lon], { radius: 700, color: colour, fillColor: colour, fillOpacity: opacity, weight: 2 })
+          .bindTooltip(label).addTo(layer);
+      }
+    });
+    data.reports.forEach(r => L.circleMarker([r.lat, r.lon], {
+      radius: 5, color: '#fff', weight: 1, fillColor: CAT_COLOUR[r.category] || CAT_COLOUR.other, fillOpacity: .95
+    }).bindTooltip(`${r.locality} · ${CAT_LABEL[r.category]}: ${r.text}`).addTo(layer));
+    data.labs.forEach(lab => L.circleMarker([lab.lat, lab.lon], { radius: 8, color: '#101828', weight: 2, fillColor: '#fff', fillOpacity: 1 })
+      .bindTooltip(`Lab (${lab.result}): ${lab.agent}`).addTo(layer));
+    if (data.reports.length) map.fitBounds(L.latLngBounds(data.reports.map(r => [r.lat, r.lon])).pad(0.3));
   }
   const panel = document.getElementById('panel');
   clear(panel);
@@ -250,32 +638,10 @@ function render(data) {
     .forEach(([label, value]) => { const s = el('div', undefined, 'stat'); s.appendChild(el('b', String(value))); s.appendChild(el('small', label)); stats.appendChild(s); });
   panel.appendChild(stats);
   if (!result.clusters.length) panel.appendChild(el('p', 'No cluster met the minimum size of four reports. Nothing is flagged.'));
-
-  result.clusters.forEach(c => {
-    const card = el('div', undefined, 'card');
-    const head = el('div');
-    head.appendChild(el('span', c.tier, 'tier ' + (c.tier.startsWith('Insufficient') ? 'Insufficient' : c.tier)));
-    head.appendChild(el('b', '  ' + c.cluster_id + ' · ' + c.locality));
-    card.appendChild(head);
-    const bar = el('div', undefined, 'bar'); const fill = el('div'); fill.style.width = Math.round(c.confidence * 100) + '%';
-    bar.appendChild(fill); card.appendChild(bar);
-    card.appendChild(el('small', 'Confidence ' + Math.round(c.confidence * 100) + '%'));
-    card.appendChild(el('p', c.explanation));
-    const f = c.factors;
-    card.appendChild(el('div', `Anomaly ${f.anomaly} · Independence ${f.independence} · Evidence ${f.evidence} · Consistency ${f.consistency}`, 'factors'));
-    c.caps.forEach(cap => card.appendChild(el('div', 'Capped: ' + cap, 'caps')));
-    card.appendChild(el('h4', 'Alternative explanations')); card.appendChild(list(c.alternative_explanations));
-    card.appendChild(el('h4', 'What would change this verdict')); card.appendChild(list(c.what_would_change_verdict));
-    card.appendChild(el('h4', 'Suggested verification')); card.appendChild(list(c.verification_steps));
-    panel.appendChild(card);
-  });
-  if (result.duplicates.length) {
-    panel.appendChild(el('h4', 'Duplicates removed (' + result.duplicates.length + ')'));
-    panel.appendChild(list(result.duplicates.slice(0, 8).map(d => `${d.duplicate_id} duplicates ${d.duplicate_of}`)));
-  }
+  clusterCards(result, panel);
 }
 
-/* ---------- 2. water network ---------- */
+/* ---------- 4. water network ---------- */
 function tierColour(r) { return r >= 0.6 ? '#B42318' : r >= 0.35 ? '#B54708' : '#039855'; }
 async function loadWater() {
   const budget = document.getElementById('budget').value;
@@ -332,16 +698,13 @@ function renderWaterSide(data) {
   data.invisible_risks.forEach(r => inv.appendChild(el('li', `${r.name}: risk ${r.risk}, uncertainty ${r.uncertainty}. ${r.reasons.join('; ')}.`)));
   const nt = document.getElementById('nexttests');
   clear(nt);
-  data.next_tests.forEach(p => {
-    const li = el('li', `${p.name}. ${p.reasons.join('; ')}.`);
-    nt.appendChild(li);
-  });
+  data.next_tests.forEach(p => nt.appendChild(el('li', `${p.name}. ${p.reasons.join('; ')}.`)));
   if (!data.next_tests.length) nt.appendChild(el('li', 'No test adds value under this budget.'));
   fillTable(document.getElementById('strategyTable'), ['Strategy', 'Contaminated places found (of 3)'],
     data.comparison.map(c => [c.strategy, Math.round(c.contaminated_places_found * 3) + ' of 3']));
 }
 
-/* ---------- 3. replay ---------- */
+/* ---------- 5. replay ---------- */
 async function loadReplay() {
   const d = await getJSON('/api/replay');
   document.getElementById('replayLabel').textContent = d.label + '. Timing test on synthetic counts, not case data.';
@@ -370,7 +733,7 @@ async function loadReplay() {
     d.days.map(x => [x.date, x.reports_to_date, x.sentinel_investigate, x.sentinel_watch, x.baseline_alerts]));
 }
 
-/* ---------- 4. compare ---------- */
+/* ---------- 6. compare ---------- */
 async function loadCompare() {
   const d = await getJSON('/api/compare');
   fillTable(document.getElementById('compareTable'),
@@ -386,7 +749,7 @@ async function loadCompare() {
   }
 }
 
-/* ---------- 5. export ---------- */
+/* ---------- 7. export ---------- */
 async function loadExport() {
   const box = document.getElementById('exportList');
   if (box.childElementCount) return;
@@ -402,7 +765,11 @@ async function loadExport() {
   });
 }
 
+/* ---------- start ---------- */
+loadLocalities();
+getJSON('/api/methodology').then(m => thresholds = m.thresholds).catch(() => {});
 loadScenarios();
+loadLive();
 document.getElementById('budget').onchange = () => loadWater();
 </script>
 </body>

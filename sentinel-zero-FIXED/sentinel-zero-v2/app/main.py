@@ -1,18 +1,25 @@
 """FastAPI application: JSON API, exports and a single-page dashboard."""
 import csv
+import hashlib
 import io
+import random
+import threading
+import uuid
+from datetime import datetime
 from pathlib import Path
 
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.responses import FileResponse, Response
+from pydantic import BaseModel, Field
 
 from . import water_network as wn
 from .baseline import baseline_alerts
-from .models import AnalysisRequest
+from .lang import classify
+from .models import AnalysisRequest, Report
 from .pipeline import DISCLAIMER, analyse
 from .replay import run_replay
 from .risk_engine import CONTRADICTION_CAP_SHARE, INVESTIGATE_THRESHOLD, MIN_INDEPENDENT_SOURCES, WATCH_THRESHOLD, WEIGHTS
-from .synthetic import SCENARIOS, build_scenario
+from .synthetic import LOCALITIES, SCENARIOS, build_scenario
 
 ROOT = Path(__file__).resolve().parent.parent
 INDEX = ROOT / "frontend" / "index.html"
@@ -200,3 +207,89 @@ def water_method() -> dict:
 @app.post("/api/analyze")
 def analyse_payload(req: AnalysisRequest) -> dict:
     return analyse(req)
+
+
+# ---------- live community feed (in memory, resets when the server restarts) ----------
+
+LIVE_LIMIT = 500          # oldest posts are dropped beyond this
+SIMULATE_MAX = 20         # one request may add at most this many simulated posts
+_live: list[Report] = []
+_live_lock = threading.Lock()
+
+
+class LivePost(BaseModel):
+    text: str = Field(min_length=3, max_length=280)
+    locality: str
+    source_id: str = Field(default="citizen", min_length=1, max_length=40)
+
+
+def _pseudonym(source_id: str) -> str:
+    """Public feeds show a short hash of the source, never the raw identifier."""
+    return "src-" + hashlib.sha1(source_id.encode()).hexdigest()[:6]
+
+
+def _store(text: str, locality: str, source_id: str) -> Report:
+    lat, lon = LOCALITIES[locality]
+    # Jitter of about 0.5 km so posts from one place do not sit on a single point.
+    # Coordinates are also coarsened in outputs, so this stays approximate.
+    report = Report(
+        id="L-" + uuid.uuid4().hex[:8], text=text,
+        lat=round(lat + random.uniform(-0.005, 0.005), 4),
+        lon=round(lon + random.uniform(-0.005, 0.005), 4),
+        timestamp=datetime.now().replace(microsecond=0),
+        locality=locality, source_id=source_id, category=classify(text),
+    )
+    with _live_lock:
+        _live.append(report)
+        del _live[:-LIVE_LIMIT]
+    return report
+
+
+@app.get("/api/localities")
+def localities() -> list[str]:
+    return list(LOCALITIES)
+
+
+@app.post("/api/live/report", status_code=201)
+def live_report(post: LivePost) -> dict:
+    if post.locality not in LOCALITIES:
+        raise HTTPException(status_code=400, detail=f"Unknown locality '{post.locality}'")
+    r = _store(post.text.strip(), post.locality, post.source_id)
+    return {"accepted": True, "id": r.id, "category": r.category, "locality": r.locality}
+
+
+@app.post("/api/live/simulate")
+def live_simulate(locality: str = Query("Jajpur"), n: int = Query(6, ge=1, le=SIMULATE_MAX)) -> dict:
+    """Adds clearly labelled SYNTHETIC posts from distinct sources. For demonstrations only."""
+    if locality not in LOCALITIES:
+        raise HTTPException(status_code=400, detail=f"Unknown locality '{locality}'")
+    texts = ["water smells bad near our tap", "tap water has a strange smell",
+             "several people in our lane have loose motions", "brown water coming from the pipe"]
+    for i in range(n):
+        _store(random.choice(texts), locality, f"sim-{uuid.uuid4().hex[:6]}")
+    return {"added": n, "locality": locality, "note": "Synthetic posts for demonstration."}
+
+
+@app.delete("/api/live")
+def live_clear() -> dict:
+    with _live_lock:
+        _live.clear()
+    return {"cleared": True}
+
+
+@app.get("/api/live")
+def live_feed() -> dict:
+    with _live_lock:
+        snapshot = list(_live)
+    req = AnalysisRequest(reports=snapshot, lab_results=[])
+    public = [{**r.model_dump(mode="json"), "source_id": _pseudonym(r.source_id)} for r in snapshot]
+    return {
+        "name": "live",
+        "label": "Live community reports",
+        "description": "Posts from the public form. Each post is classified, de-duplicated, clustered and scored.",
+        "expected": "Clusters appear once several distinct sources report close together in space and time.",
+        "reports": public,
+        "labs": [],
+        "result": analyse(req),
+        "total_posts": len(snapshot),
+    }
