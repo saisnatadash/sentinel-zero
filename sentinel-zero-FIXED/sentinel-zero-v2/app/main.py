@@ -2,10 +2,11 @@
 import csv
 import hashlib
 import io
+import os
 import random
 import threading
 import uuid
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 
 from fastapi import FastAPI, HTTPException, Query
@@ -228,7 +229,7 @@ def _pseudonym(source_id: str) -> str:
     return "src-" + hashlib.sha1(source_id.encode()).hexdigest()[:6]
 
 
-def _store(text: str, locality: str, source_id: str) -> Report:
+def _store(text: str, locality: str, source_id: str, when: datetime | None = None) -> Report:
     lat, lon = LOCALITIES[locality]
     # Jitter of about 0.5 km so posts from one place do not sit on a single point.
     # Coordinates are also coarsened in outputs, so this stays approximate.
@@ -236,7 +237,7 @@ def _store(text: str, locality: str, source_id: str) -> Report:
         id="L-" + uuid.uuid4().hex[:8], text=text,
         lat=round(lat + random.uniform(-0.005, 0.005), 4),
         lon=round(lon + random.uniform(-0.005, 0.005), 4),
-        timestamp=datetime.now().replace(microsecond=0),
+        timestamp=(when or datetime.now()).replace(microsecond=0),
         locality=locality, source_id=source_id, category=classify(text),
     )
     with _live_lock:
@@ -293,3 +294,30 @@ def live_feed() -> dict:
         "result": analyse(req),
         "total_posts": len(snapshot),
     }
+
+
+# Example posts so the live feed is not empty on first load. Set SEED_DEMO=0 to start empty.
+# They are synthetic, written for demonstration, and come from pseudonymous demo sources.
+EXAMPLE_POSTS = [
+    ("Jajpur", "water smells bad near our tap", 50),
+    ("Jajpur", "tap water has a strange smell since morning", 42),
+    ("Jajpur", "several people in our lane have loose motions", 37),
+    ("Jajpur", "brown water coming from the pipe", 31),
+    ("Jajpur", "water smells like sewage at the tank", 24),
+    ("Jajpur", "stomach upset after drinking tap water", 18),
+    ("Cuttack", "power cut for two hours yesterday", 40),
+    ("Puri", "bus fare increased again", 33),
+    ("Balasore", "school timings changed this week", 22),
+    ("Berhampur", "water looks yellowish from the tap", 12),
+]
+
+
+def seed_example_posts() -> None:
+    if os.environ.get("SEED_DEMO", "1") != "1":
+        return
+    now = datetime.now()
+    for i, (locality, text, minutes_ago) in enumerate(EXAMPLE_POSTS):
+        _store(text, locality, f"demo-{i:02d}", when=now - timedelta(minutes=minutes_ago))
+
+
+seed_example_posts()
