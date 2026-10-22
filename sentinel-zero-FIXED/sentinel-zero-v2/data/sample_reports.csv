@@ -1,0 +1,247 @@
+scenario,id,timestamp,locality,lat,lon,source_id,category,event_flag,text
+normal,N-B000,2026-09-05T02:24:35.463499,Berhampur,19.30501,84.79451,N-bg000,other,,school timings changed this week
+normal,N-B001,2026-09-02T11:12:41.211949,Berhampur,19.30859,84.78102,N-bg001,other,,school timings changed this week
+normal,N-B002,2026-09-01T14:54:57.908930,Bhubaneswar,20.29457,85.82288,N-bg002,other,,school timings changed this week
+normal,N-B003,2026-09-09T11:59:35.771216,Balasore,21.49558,86.90044,N-bg003,other,,power cut for two hours yesterday
+normal,N-B004,2026-09-05T03:21:53.174886,Bhubaneswar,20.29487,85.82506,N-bg004,other,,power cut for two hours yesterday
+normal,N-B005,2026-09-06T06:37:01.458634,Jajpur,20.84719,86.32546,N-bg005,other,,bus fare increased again
+normal,N-B006,2026-09-02T23:56:29.726587,Jajpur,20.85761,86.32188,N-bg006,other,,school timings changed this week
+normal,N-B007,2026-09-13T15:30:42.434304,Cuttack,20.45751,85.87408,N-bg007,other,,school timings changed this week
+normal,N-B008,2026-09-12T01:45:03.465018,Jajpur,20.85874,86.33685,N-bg008,other,,bus fare increased again
+normal,N-B009,2026-09-10T03:35:23.903782,Jajpur,20.84756,86.3275,N-bg009,other,,power cut for two hours yesterday
+normal,N-B010,2026-09-14T08:42:57.389297,Bhubaneswar,20.30267,85.8221,N-bg010,other,,school timings changed this week
+normal,N-B011,2026-09-03T12:54:11.656454,Bhubaneswar,20.29783,85.8294,N-bg011,other,,bus fare increased again
+normal,N-B012,2026-09-10T20:01:49.397997,Berhampur,19.31618,84.79527,N-bg012,other,,bus fare increased again
+normal,N-B013,2026-09-06T20:47:28.926382,Bhubaneswar,20.29218,85.82794,N-bg013,other,,power cut for two hours yesterday
+normal,N-B014,2026-09-04T05:26:33.067688,Balasore,21.48999,86.91745,N-bg014,water_odour,,rotten smell from the water supply since morning
+normal,N-B015,2026-09-03T04:54:56.834498,Berhampur,19.31441,84.79074,N-bg015,other,,power cut for two hours yesterday
+normal,N-B016,2026-09-06T20:11:54.851018,Berhampur,19.30494,84.7995,N-bg016,other,,school timings changed this week
+normal,N-B017,2026-09-13T07:19:50.079533,Balasore,21.48374,86.90342,N-bg017,other,,bus fare increased again
+normal,N-B018,2026-09-06T15:16:54.540201,Berhampur,19.31173,84.78939,N-bg018,other,,bus fare increased again
+normal,N-B019,2026-09-10T18:34:30.813046,Cuttack,20.45305,85.8874,N-bg019,diarrhoea_symptoms,,several people in our lane have loose motions
+normal,N-B020,2026-09-02T19:28:53.509182,Cuttack,20.45882,85.87911,N-bg020,other,,power cut for two hours yesterday
+normal,N-B021,2026-09-14T20:33:15.844393,Berhampur,19.31472,84.79015,N-bg021,water_odour,,rotten smell from the water supply since morning
+normal,N-B022,2026-09-13T00:48:03.243549,Jajpur,20.85014,86.32419,N-bg022,water_odour,,rotten smell from the water supply since morning
+normal,N-B023,2026-09-14T14:22:33.294762,Cuttack,20.46761,85.88805,N-bg023,other,,school timings changed this week
+normal,N-B024,2026-09-02T19:35:15.200548,Balasore,21.48753,86.9194,N-bg024,other,,bus fare increased again
+normal,N-B025,2026-09-13T13:00:40.411197,Cuttack,20.46805,85.87203,N-bg025,other,,bus fare increased again
+normal,N-B026,2026-09-11T23:19:13.325690,Puri,19.8033,85.82953,N-bg026,other,,school timings changed this week
+normal,N-B027,2026-09-13T11:08:15.006497,Balasore,21.48862,86.90442,N-bg027,other,,school timings changed this week
+normal,N-B028,2026-09-04T01:35:12.326276,Balasore,21.48661,86.91959,N-bg028,other,,school timings changed this week
+normal,N-B029,2026-09-07T13:41:57.636627,Berhampur,19.30546,84.78168,N-bg029,other,,school timings changed this week
+normal,N-B030,2026-09-09T11:42:57.162391,Jajpur,20.84112,86.33401,N-bg030,other,,bus fare increased again
+normal,N-B031,2026-09-13T06:50:14.980147,Jajpur,20.84227,86.32495,N-bg031,other,,bus fare increased again
+normal,N-B032,2026-09-03T02:27:24.412218,Berhampur,19.31785,84.79136,N-bg032,other,,school timings changed this week
+normal,N-B033,2026-09-12T13:19:08.368499,Puri,19.80442,85.82228,N-bg033,other,,power cut for two hours yesterday
+normal,N-B034,2026-09-07T18:55:13.038457,Puri,19.81413,85.83332,N-bg034,other,,power cut for two hours yesterday
+normal,N-B035,2026-09-11T10:40:47.156578,Berhampur,19.31542,84.78254,N-bg035,other,,power cut for two hours yesterday
+normal,N-B036,2026-09-03T05:06:04.506566,Bhubaneswar,20.2943,85.81928,N-bg036,other,,power cut for two hours yesterday
+normal,N-B037,2026-09-02T14:53:50.397633,Jajpur,20.85274,86.33078,N-bg037,other,,school timings changed this week
+normal,N-B038,2026-09-03T13:52:49.919386,Jajpur,20.84974,86.32448,N-bg038,diarrhoea_symptoms,,several people in our lane have loose motions
+normal,N-B039,2026-09-06T13:20:05.884714,Puri,19.81874,85.8255,N-bg039,water_colour,,water looks yellowish from the tap
+true_cluster,T-B000,2026-09-05T02:24:35.463499,Berhampur,19.30501,84.79451,T-bg000,other,,school timings changed this week
+true_cluster,T-B001,2026-09-02T11:12:41.211949,Berhampur,19.30859,84.78102,T-bg001,other,,school timings changed this week
+true_cluster,T-B002,2026-09-01T14:54:57.908930,Bhubaneswar,20.29457,85.82288,T-bg002,other,,school timings changed this week
+true_cluster,T-B003,2026-09-09T11:59:35.771216,Balasore,21.49558,86.90044,T-bg003,other,,power cut for two hours yesterday
+true_cluster,T-B004,2026-09-05T03:21:53.174886,Bhubaneswar,20.29487,85.82506,T-bg004,other,,power cut for two hours yesterday
+true_cluster,T-B005,2026-09-06T06:37:01.458634,Jajpur,20.84719,86.32546,T-bg005,other,,bus fare increased again
+true_cluster,T-B006,2026-09-02T23:56:29.726587,Jajpur,20.85761,86.32188,T-bg006,other,,school timings changed this week
+true_cluster,T-B007,2026-09-13T15:30:42.434304,Cuttack,20.45751,85.87408,T-bg007,other,,school timings changed this week
+true_cluster,T-B008,2026-09-12T01:45:03.465018,Jajpur,20.85874,86.33685,T-bg008,other,,bus fare increased again
+true_cluster,T-B009,2026-09-10T03:35:23.903782,Jajpur,20.84756,86.3275,T-bg009,other,,power cut for two hours yesterday
+true_cluster,T-B010,2026-09-14T08:42:57.389297,Bhubaneswar,20.30267,85.8221,T-bg010,other,,school timings changed this week
+true_cluster,T-B011,2026-09-03T12:54:11.656454,Bhubaneswar,20.29783,85.8294,T-bg011,other,,bus fare increased again
+true_cluster,T-B012,2026-09-10T20:01:49.397997,Berhampur,19.31618,84.79527,T-bg012,other,,bus fare increased again
+true_cluster,T-B013,2026-09-06T20:47:28.926382,Bhubaneswar,20.29218,85.82794,T-bg013,other,,power cut for two hours yesterday
+true_cluster,T-B014,2026-09-04T05:26:33.067688,Balasore,21.48999,86.91745,T-bg014,water_odour,,rotten smell from the water supply since morning
+true_cluster,T-B015,2026-09-03T04:54:56.834498,Berhampur,19.31441,84.79074,T-bg015,other,,power cut for two hours yesterday
+true_cluster,T-B016,2026-09-06T20:11:54.851018,Berhampur,19.30494,84.7995,T-bg016,other,,school timings changed this week
+true_cluster,T-B017,2026-09-13T07:19:50.079533,Balasore,21.48374,86.90342,T-bg017,other,,bus fare increased again
+true_cluster,T-B018,2026-09-06T15:16:54.540201,Berhampur,19.31173,84.78939,T-bg018,other,,bus fare increased again
+true_cluster,T-B019,2026-09-10T18:34:30.813046,Cuttack,20.45305,85.8874,T-bg019,diarrhoea_symptoms,,several people in our lane have loose motions
+true_cluster,T-B020,2026-09-02T19:28:53.509182,Cuttack,20.45882,85.87911,T-bg020,other,,power cut for two hours yesterday
+true_cluster,T-B021,2026-09-14T20:33:15.844393,Berhampur,19.31472,84.79015,T-bg021,water_odour,,rotten smell from the water supply since morning
+true_cluster,T-B022,2026-09-13T00:48:03.243549,Jajpur,20.85014,86.32419,T-bg022,water_odour,,rotten smell from the water supply since morning
+true_cluster,T-B023,2026-09-14T14:22:33.294762,Cuttack,20.46761,85.88805,T-bg023,other,,school timings changed this week
+true_cluster,T-B024,2026-09-02T19:35:15.200548,Balasore,21.48753,86.9194,T-bg024,other,,bus fare increased again
+true_cluster,T-B025,2026-09-13T13:00:40.411197,Cuttack,20.46805,85.87203,T-bg025,other,,bus fare increased again
+true_cluster,T-B026,2026-09-11T23:19:13.325690,Puri,19.8033,85.82953,T-bg026,other,,school timings changed this week
+true_cluster,T-B027,2026-09-13T11:08:15.006497,Balasore,21.48862,86.90442,T-bg027,other,,school timings changed this week
+true_cluster,T-B028,2026-09-04T01:35:12.326276,Balasore,21.48661,86.91959,T-bg028,other,,school timings changed this week
+true_cluster,T-B029,2026-09-07T13:41:57.636627,Berhampur,19.30546,84.78168,T-bg029,other,,school timings changed this week
+true_cluster,T-B030,2026-09-09T11:42:57.162391,Jajpur,20.84112,86.33401,T-bg030,other,,bus fare increased again
+true_cluster,T-B031,2026-09-13T06:50:14.980147,Jajpur,20.84227,86.32495,T-bg031,other,,bus fare increased again
+true_cluster,T-B032,2026-09-03T02:27:24.412218,Berhampur,19.31785,84.79136,T-bg032,other,,school timings changed this week
+true_cluster,T-B033,2026-09-12T13:19:08.368499,Puri,19.80442,85.82228,T-bg033,other,,power cut for two hours yesterday
+true_cluster,T-B034,2026-09-07T18:55:13.038457,Puri,19.81413,85.83332,T-bg034,other,,power cut for two hours yesterday
+true_cluster,T-B035,2026-09-11T10:40:47.156578,Berhampur,19.31542,84.78254,T-bg035,other,,power cut for two hours yesterday
+true_cluster,T-B036,2026-09-03T05:06:04.506566,Bhubaneswar,20.2943,85.81928,T-bg036,other,,power cut for two hours yesterday
+true_cluster,T-B037,2026-09-02T14:53:50.397633,Jajpur,20.85274,86.33078,T-bg037,other,,school timings changed this week
+true_cluster,T-B038,2026-09-03T13:52:49.919386,Jajpur,20.84974,86.32448,T-bg038,diarrhoea_symptoms,,several people in our lane have loose motions
+true_cluster,T-B039,2026-09-06T13:20:05.884714,Puri,19.81874,85.8255,T-bg039,water_colour,,water looks yellowish from the tap
+true_cluster,T-C00,2026-09-02T12:09:07.846790,Jajpur,20.85824,86.33955,T-src00,diarrhoea_symptoms,,stomach upset after drinking tap water
+true_cluster,T-C01,2026-09-02T06:33:27.175732,Jajpur,20.84491,86.32149,T-src01,diarrhoea_symptoms,,several people in our lane have loose motions
+true_cluster,T-C02,2026-09-02T03:22:19.079579,Jajpur,20.85152,86.33005,T-src02,water_odour,,rotten smell from the water supply since morning
+true_cluster,T-C03,2026-09-03T01:03:31.297243,Jajpur,20.84243,86.32394,T-src03,water_odour,,water smells bad near our tap
+true_cluster,T-C04,2026-09-02T11:41:26.207634,Jajpur,20.85796,86.33134,T-src04,water_odour,,tap water has a strange smell
+true_cluster,T-C05,2026-09-02T12:03:41.032685,Jajpur,20.85151,86.33044,T-src05,water_odour,,water smells bad near our tap
+true_cluster,T-C06,2026-09-02T18:04:24.324220,Jajpur,20.84665,86.32548,T-src06,diarrhoea_symptoms,,several people in our lane have loose motions
+true_cluster,T-C07,2026-09-02T12:58:24.203070,Jajpur,20.85773,86.3384,T-src07,water_odour,,rotten smell from the water supply since morning
+true_cluster,T-C08,2026-09-02T16:54:28.159675,Jajpur,20.85114,86.32229,T-src08,water_odour,,water smells like sewage
+true_cluster,T-C09,2026-09-02T05:10:44.247680,Jajpur,20.84728,86.32169,T-src09,water_odour,,rotten smell from the water supply since morning
+true_cluster,T-C10,2026-09-02T08:50:22.910601,Jajpur,20.84889,86.33083,T-src10,water_odour,,rotten smell from the water supply since morning
+true_cluster,T-C11,2026-09-02T18:01:43.380801,Jajpur,20.85098,86.33832,T-src11,diarrhoea_symptoms,,several people in our lane have loose motions
+true_cluster,T-C12,2026-09-02T08:20:49.855616,Jajpur,20.85702,86.33467,T-src12,water_odour,,tap water has a strange smell
+true_cluster,T-C13,2026-09-02T08:45:43.741854,Jajpur,20.84479,86.32697,T-src13,water_odour,,rotten smell from the water supply since morning
+duplicates,D-B000,2026-09-05T02:24:35.463499,Berhampur,19.30501,84.79451,D-bg000,other,,school timings changed this week
+duplicates,D-B001,2026-09-02T11:12:41.211949,Berhampur,19.30859,84.78102,D-bg001,other,,school timings changed this week
+duplicates,D-B002,2026-09-01T14:54:57.908930,Bhubaneswar,20.29457,85.82288,D-bg002,other,,school timings changed this week
+duplicates,D-B003,2026-09-09T11:59:35.771216,Balasore,21.49558,86.90044,D-bg003,other,,power cut for two hours yesterday
+duplicates,D-B004,2026-09-05T03:21:53.174886,Bhubaneswar,20.29487,85.82506,D-bg004,other,,power cut for two hours yesterday
+duplicates,D-B005,2026-09-06T06:37:01.458634,Jajpur,20.84719,86.32546,D-bg005,other,,bus fare increased again
+duplicates,D-B006,2026-09-02T23:56:29.726587,Jajpur,20.85761,86.32188,D-bg006,other,,school timings changed this week
+duplicates,D-B007,2026-09-13T15:30:42.434304,Cuttack,20.45751,85.87408,D-bg007,other,,school timings changed this week
+duplicates,D-B008,2026-09-12T01:45:03.465018,Jajpur,20.85874,86.33685,D-bg008,other,,bus fare increased again
+duplicates,D-B009,2026-09-10T03:35:23.903782,Jajpur,20.84756,86.3275,D-bg009,other,,power cut for two hours yesterday
+duplicates,D-B010,2026-09-14T08:42:57.389297,Bhubaneswar,20.30267,85.8221,D-bg010,other,,school timings changed this week
+duplicates,D-B011,2026-09-03T12:54:11.656454,Bhubaneswar,20.29783,85.8294,D-bg011,other,,bus fare increased again
+duplicates,D-B012,2026-09-10T20:01:49.397997,Berhampur,19.31618,84.79527,D-bg012,other,,bus fare increased again
+duplicates,D-B013,2026-09-06T20:47:28.926382,Bhubaneswar,20.29218,85.82794,D-bg013,other,,power cut for two hours yesterday
+duplicates,D-B014,2026-09-04T05:26:33.067688,Balasore,21.48999,86.91745,D-bg014,water_odour,,rotten smell from the water supply since morning
+duplicates,D-B015,2026-09-03T04:54:56.834498,Berhampur,19.31441,84.79074,D-bg015,other,,power cut for two hours yesterday
+duplicates,D-B016,2026-09-06T20:11:54.851018,Berhampur,19.30494,84.7995,D-bg016,other,,school timings changed this week
+duplicates,D-B017,2026-09-13T07:19:50.079533,Balasore,21.48374,86.90342,D-bg017,other,,bus fare increased again
+duplicates,D-B018,2026-09-06T15:16:54.540201,Berhampur,19.31173,84.78939,D-bg018,other,,bus fare increased again
+duplicates,D-B019,2026-09-10T18:34:30.813046,Cuttack,20.45305,85.8874,D-bg019,diarrhoea_symptoms,,several people in our lane have loose motions
+duplicates,D-B020,2026-09-02T19:28:53.509182,Cuttack,20.45882,85.87911,D-bg020,other,,power cut for two hours yesterday
+duplicates,D-B021,2026-09-14T20:33:15.844393,Berhampur,19.31472,84.79015,D-bg021,water_odour,,rotten smell from the water supply since morning
+duplicates,D-B022,2026-09-13T00:48:03.243549,Jajpur,20.85014,86.32419,D-bg022,water_odour,,rotten smell from the water supply since morning
+duplicates,D-B023,2026-09-14T14:22:33.294762,Cuttack,20.46761,85.88805,D-bg023,other,,school timings changed this week
+duplicates,D-B024,2026-09-02T19:35:15.200548,Balasore,21.48753,86.9194,D-bg024,other,,bus fare increased again
+duplicates,D-B025,2026-09-13T13:00:40.411197,Cuttack,20.46805,85.87203,D-bg025,other,,bus fare increased again
+duplicates,D-B026,2026-09-11T23:19:13.325690,Puri,19.8033,85.82953,D-bg026,other,,school timings changed this week
+duplicates,D-B027,2026-09-13T11:08:15.006497,Balasore,21.48862,86.90442,D-bg027,other,,school timings changed this week
+duplicates,D-B028,2026-09-04T01:35:12.326276,Balasore,21.48661,86.91959,D-bg028,other,,school timings changed this week
+duplicates,D-B029,2026-09-07T13:41:57.636627,Berhampur,19.30546,84.78168,D-bg029,other,,school timings changed this week
+duplicates,D-B030,2026-09-09T11:42:57.162391,Jajpur,20.84112,86.33401,D-bg030,other,,bus fare increased again
+duplicates,D-B031,2026-09-13T06:50:14.980147,Jajpur,20.84227,86.32495,D-bg031,other,,bus fare increased again
+duplicates,D-B032,2026-09-03T02:27:24.412218,Berhampur,19.31785,84.79136,D-bg032,other,,school timings changed this week
+duplicates,D-B033,2026-09-12T13:19:08.368499,Puri,19.80442,85.82228,D-bg033,other,,power cut for two hours yesterday
+duplicates,D-B034,2026-09-07T18:55:13.038457,Puri,19.81413,85.83332,D-bg034,other,,power cut for two hours yesterday
+duplicates,D-B035,2026-09-11T10:40:47.156578,Berhampur,19.31542,84.78254,D-bg035,other,,power cut for two hours yesterday
+duplicates,D-B036,2026-09-03T05:06:04.506566,Bhubaneswar,20.2943,85.81928,D-bg036,other,,power cut for two hours yesterday
+duplicates,D-B037,2026-09-02T14:53:50.397633,Jajpur,20.85274,86.33078,D-bg037,other,,school timings changed this week
+duplicates,D-B038,2026-09-03T13:52:49.919386,Jajpur,20.84974,86.32448,D-bg038,diarrhoea_symptoms,,several people in our lane have loose motions
+duplicates,D-B039,2026-09-06T13:20:05.884714,Puri,19.81874,85.8255,D-bg039,water_colour,,water looks yellowish from the tap
+duplicates,D-V00,2026-09-03T08:00:00,Puri,19.81512,85.82914,D-viral-account,water_odour,,water smells bad near our tap
+duplicates,D-V01,2026-09-03T08:24:00,Puri,19.80861,85.83876,D-viral-account,water_odour,,water smells bad near our tap
+duplicates,D-V02,2026-09-03T08:48:00,Puri,19.81893,85.83107,D-viral-account,water_odour,,water smells bad near our tap
+duplicates,D-V03,2026-09-03T09:12:00,Puri,19.81394,85.82339,D-viral-account,water_odour,,water smells bad near our tap
+duplicates,D-V04,2026-09-03T09:36:00,Puri,19.80634,85.83898,D-viral-account,water_odour,,water smells bad near our tap
+duplicates,D-V05,2026-09-03T10:00:00,Puri,19.81143,85.83081,D-viral-account,water_odour,,water smells bad near our tap
+duplicates,D-V06,2026-09-03T10:24:00,Puri,19.81447,85.82152,D-viral-account,water_odour,,water smells bad near our tap
+duplicates,D-V07,2026-09-03T10:48:00,Puri,19.81152,85.83005,D-viral-account,water_odour,,water smells bad near our tap
+duplicates,D-V08,2026-09-03T11:12:00,Puri,19.81636,85.82344,D-viral-account,water_odour,,water smells bad near our tap
+duplicates,D-V09,2026-09-03T11:36:00,Puri,19.8183,85.82196,D-viral-account,water_odour,,water smells bad near our tap
+duplicates,D-V10,2026-09-03T12:00:00,Puri,19.80434,85.83182,D-viral-account,water_odour,,water smells bad near our tap
+duplicates,D-V11,2026-09-03T12:24:00,Puri,19.81316,85.82493,D-viral-account,water_odour,,water smells bad near our tap
+duplicates,D-G1,2026-09-03T10:00:00,Puri,19.80315,85.83747,D-src-a,water_odour,,tap water has a strange smell
+duplicates,D-G2,2026-09-03T11:00:00,Puri,19.80543,85.83181,D-src-b,water_odour,,rotten smell from the water supply since morning
+contradictory,C-B000,2026-09-05T02:24:35.463499,Berhampur,19.30501,84.79451,C-bg000,other,,school timings changed this week
+contradictory,C-B001,2026-09-02T11:12:41.211949,Berhampur,19.30859,84.78102,C-bg001,other,,school timings changed this week
+contradictory,C-B002,2026-09-01T14:54:57.908930,Bhubaneswar,20.29457,85.82288,C-bg002,other,,school timings changed this week
+contradictory,C-B003,2026-09-09T11:59:35.771216,Balasore,21.49558,86.90044,C-bg003,other,,power cut for two hours yesterday
+contradictory,C-B004,2026-09-05T03:21:53.174886,Bhubaneswar,20.29487,85.82506,C-bg004,other,,power cut for two hours yesterday
+contradictory,C-B005,2026-09-06T06:37:01.458634,Jajpur,20.84719,86.32546,C-bg005,other,,bus fare increased again
+contradictory,C-B006,2026-09-02T23:56:29.726587,Jajpur,20.85761,86.32188,C-bg006,other,,school timings changed this week
+contradictory,C-B007,2026-09-13T15:30:42.434304,Cuttack,20.45751,85.87408,C-bg007,other,,school timings changed this week
+contradictory,C-B008,2026-09-12T01:45:03.465018,Jajpur,20.85874,86.33685,C-bg008,other,,bus fare increased again
+contradictory,C-B009,2026-09-10T03:35:23.903782,Jajpur,20.84756,86.3275,C-bg009,other,,power cut for two hours yesterday
+contradictory,C-B010,2026-09-14T08:42:57.389297,Bhubaneswar,20.30267,85.8221,C-bg010,other,,school timings changed this week
+contradictory,C-B011,2026-09-03T12:54:11.656454,Bhubaneswar,20.29783,85.8294,C-bg011,other,,bus fare increased again
+contradictory,C-B012,2026-09-10T20:01:49.397997,Berhampur,19.31618,84.79527,C-bg012,other,,bus fare increased again
+contradictory,C-B013,2026-09-06T20:47:28.926382,Bhubaneswar,20.29218,85.82794,C-bg013,other,,power cut for two hours yesterday
+contradictory,C-B014,2026-09-04T05:26:33.067688,Balasore,21.48999,86.91745,C-bg014,water_odour,,rotten smell from the water supply since morning
+contradictory,C-B015,2026-09-03T04:54:56.834498,Berhampur,19.31441,84.79074,C-bg015,other,,power cut for two hours yesterday
+contradictory,C-B016,2026-09-06T20:11:54.851018,Berhampur,19.30494,84.7995,C-bg016,other,,school timings changed this week
+contradictory,C-B017,2026-09-13T07:19:50.079533,Balasore,21.48374,86.90342,C-bg017,other,,bus fare increased again
+contradictory,C-B018,2026-09-06T15:16:54.540201,Berhampur,19.31173,84.78939,C-bg018,other,,bus fare increased again
+contradictory,C-B019,2026-09-10T18:34:30.813046,Cuttack,20.45305,85.8874,C-bg019,diarrhoea_symptoms,,several people in our lane have loose motions
+contradictory,C-B020,2026-09-02T19:28:53.509182,Cuttack,20.45882,85.87911,C-bg020,other,,power cut for two hours yesterday
+contradictory,C-B021,2026-09-14T20:33:15.844393,Berhampur,19.31472,84.79015,C-bg021,water_odour,,rotten smell from the water supply since morning
+contradictory,C-B022,2026-09-13T00:48:03.243549,Jajpur,20.85014,86.32419,C-bg022,water_odour,,rotten smell from the water supply since morning
+contradictory,C-B023,2026-09-14T14:22:33.294762,Cuttack,20.46761,85.88805,C-bg023,other,,school timings changed this week
+contradictory,C-B024,2026-09-02T19:35:15.200548,Balasore,21.48753,86.9194,C-bg024,other,,bus fare increased again
+contradictory,C-B025,2026-09-13T13:00:40.411197,Cuttack,20.46805,85.87203,C-bg025,other,,bus fare increased again
+contradictory,C-B026,2026-09-11T23:19:13.325690,Puri,19.8033,85.82953,C-bg026,other,,school timings changed this week
+contradictory,C-B027,2026-09-13T11:08:15.006497,Balasore,21.48862,86.90442,C-bg027,other,,school timings changed this week
+contradictory,C-B028,2026-09-04T01:35:12.326276,Balasore,21.48661,86.91959,C-bg028,other,,school timings changed this week
+contradictory,C-B029,2026-09-07T13:41:57.636627,Berhampur,19.30546,84.78168,C-bg029,other,,school timings changed this week
+contradictory,C-B030,2026-09-09T11:42:57.162391,Jajpur,20.84112,86.33401,C-bg030,other,,bus fare increased again
+contradictory,C-B031,2026-09-13T06:50:14.980147,Jajpur,20.84227,86.32495,C-bg031,other,,bus fare increased again
+contradictory,C-B032,2026-09-03T02:27:24.412218,Berhampur,19.31785,84.79136,C-bg032,other,,school timings changed this week
+contradictory,C-B033,2026-09-12T13:19:08.368499,Puri,19.80442,85.82228,C-bg033,other,,power cut for two hours yesterday
+contradictory,C-B034,2026-09-07T18:55:13.038457,Puri,19.81413,85.83332,C-bg034,other,,power cut for two hours yesterday
+contradictory,C-B035,2026-09-11T10:40:47.156578,Berhampur,19.31542,84.78254,C-bg035,other,,power cut for two hours yesterday
+contradictory,C-B036,2026-09-03T05:06:04.506566,Bhubaneswar,20.2943,85.81928,C-bg036,other,,power cut for two hours yesterday
+contradictory,C-B037,2026-09-02T14:53:50.397633,Jajpur,20.85274,86.33078,C-bg037,other,,school timings changed this week
+contradictory,C-B038,2026-09-03T13:52:49.919386,Jajpur,20.84974,86.32448,C-bg038,diarrhoea_symptoms,,several people in our lane have loose motions
+contradictory,C-B039,2026-09-06T13:20:05.884714,Puri,19.81874,85.8255,C-bg039,water_colour,,water looks yellowish from the tap
+contradictory,C-X00,2026-09-03T18:00:00,Balasore,21.49512,86.90913,C-src00,water_odour,,water smells bad near our tap
+contradictory,C-X01,2026-09-03T19:30:00,Balasore,21.48861,86.91886,C-src01,water_odour,,water is clear today and has no smell
+contradictory,C-X02,2026-09-03T21:00:00,Balasore,21.49893,86.91108,C-src02,water_odour,,water smells bad near our tap
+contradictory,C-X03,2026-09-03T22:30:00,Balasore,21.49394,86.90332,C-src03,water_odour,,water is clear today and has no smell
+contradictory,C-X04,2026-09-04T00:00:00,Balasore,21.48634,86.91908,C-src04,water_odour,,water smells bad near our tap
+contradictory,C-X05,2026-09-04T01:30:00,Balasore,21.49143,86.91082,C-src05,water_odour,,water is clear today and has no smell
+contradictory,C-X06,2026-09-04T03:00:00,Balasore,21.49447,86.90142,C-src06,water_odour,,water smells bad near our tap
+contradictory,C-X07,2026-09-04T04:30:00,Balasore,21.49152,86.91006,C-src07,water_odour,,water is clear today and has no smell
+contradictory,C-X08,2026-09-04T06:00:00,Balasore,21.49636,86.90337,C-src08,water_odour,,water smells bad near our tap
+contradictory,C-X09,2026-09-04T07:30:00,Balasore,21.4983,86.90187,C-src09,water_odour,,water is clear today and has no smell
+coincidental,F-B000,2026-09-05T02:24:35.463499,Berhampur,19.30501,84.79451,F-bg000,other,,school timings changed this week
+coincidental,F-B001,2026-09-02T11:12:41.211949,Berhampur,19.30859,84.78102,F-bg001,other,,school timings changed this week
+coincidental,F-B002,2026-09-01T14:54:57.908930,Bhubaneswar,20.29457,85.82288,F-bg002,other,,school timings changed this week
+coincidental,F-B003,2026-09-09T11:59:35.771216,Balasore,21.49558,86.90044,F-bg003,other,,power cut for two hours yesterday
+coincidental,F-B004,2026-09-05T03:21:53.174886,Bhubaneswar,20.29487,85.82506,F-bg004,other,,power cut for two hours yesterday
+coincidental,F-B005,2026-09-06T06:37:01.458634,Jajpur,20.84719,86.32546,F-bg005,other,,bus fare increased again
+coincidental,F-B006,2026-09-02T23:56:29.726587,Jajpur,20.85761,86.32188,F-bg006,other,,school timings changed this week
+coincidental,F-B007,2026-09-13T15:30:42.434304,Cuttack,20.45751,85.87408,F-bg007,other,,school timings changed this week
+coincidental,F-B008,2026-09-12T01:45:03.465018,Jajpur,20.85874,86.33685,F-bg008,other,,bus fare increased again
+coincidental,F-B009,2026-09-10T03:35:23.903782,Jajpur,20.84756,86.3275,F-bg009,other,,power cut for two hours yesterday
+coincidental,F-B010,2026-09-14T08:42:57.389297,Bhubaneswar,20.30267,85.8221,F-bg010,other,,school timings changed this week
+coincidental,F-B011,2026-09-03T12:54:11.656454,Bhubaneswar,20.29783,85.8294,F-bg011,other,,bus fare increased again
+coincidental,F-B012,2026-09-10T20:01:49.397997,Berhampur,19.31618,84.79527,F-bg012,other,,bus fare increased again
+coincidental,F-B013,2026-09-06T20:47:28.926382,Bhubaneswar,20.29218,85.82794,F-bg013,other,,power cut for two hours yesterday
+coincidental,F-B014,2026-09-04T05:26:33.067688,Balasore,21.48999,86.91745,F-bg014,water_odour,,rotten smell from the water supply since morning
+coincidental,F-B015,2026-09-03T04:54:56.834498,Berhampur,19.31441,84.79074,F-bg015,other,,power cut for two hours yesterday
+coincidental,F-B016,2026-09-06T20:11:54.851018,Berhampur,19.30494,84.7995,F-bg016,other,,school timings changed this week
+coincidental,F-B017,2026-09-13T07:19:50.079533,Balasore,21.48374,86.90342,F-bg017,other,,bus fare increased again
+coincidental,F-B018,2026-09-06T15:16:54.540201,Berhampur,19.31173,84.78939,F-bg018,other,,bus fare increased again
+coincidental,F-B019,2026-09-10T18:34:30.813046,Cuttack,20.45305,85.8874,F-bg019,diarrhoea_symptoms,,several people in our lane have loose motions
+coincidental,F-B020,2026-09-02T19:28:53.509182,Cuttack,20.45882,85.87911,F-bg020,other,,power cut for two hours yesterday
+coincidental,F-B021,2026-09-14T20:33:15.844393,Berhampur,19.31472,84.79015,F-bg021,water_odour,,rotten smell from the water supply since morning
+coincidental,F-B022,2026-09-13T00:48:03.243549,Jajpur,20.85014,86.32419,F-bg022,water_odour,,rotten smell from the water supply since morning
+coincidental,F-B023,2026-09-14T14:22:33.294762,Cuttack,20.46761,85.88805,F-bg023,other,,school timings changed this week
+coincidental,F-B024,2026-09-02T19:35:15.200548,Balasore,21.48753,86.9194,F-bg024,other,,bus fare increased again
+coincidental,F-B025,2026-09-13T13:00:40.411197,Cuttack,20.46805,85.87203,F-bg025,other,,bus fare increased again
+coincidental,F-B026,2026-09-11T23:19:13.325690,Puri,19.8033,85.82953,F-bg026,other,,school timings changed this week
+coincidental,F-B027,2026-09-13T11:08:15.006497,Balasore,21.48862,86.90442,F-bg027,other,,school timings changed this week
+coincidental,F-B028,2026-09-04T01:35:12.326276,Balasore,21.48661,86.91959,F-bg028,other,,school timings changed this week
+coincidental,F-B029,2026-09-07T13:41:57.636627,Berhampur,19.30546,84.78168,F-bg029,other,,school timings changed this week
+coincidental,F-B030,2026-09-09T11:42:57.162391,Jajpur,20.84112,86.33401,F-bg030,other,,bus fare increased again
+coincidental,F-B031,2026-09-13T06:50:14.980147,Jajpur,20.84227,86.32495,F-bg031,other,,bus fare increased again
+coincidental,F-B032,2026-09-03T02:27:24.412218,Berhampur,19.31785,84.79136,F-bg032,other,,school timings changed this week
+coincidental,F-B033,2026-09-12T13:19:08.368499,Puri,19.80442,85.82228,F-bg033,other,,power cut for two hours yesterday
+coincidental,F-B034,2026-09-07T18:55:13.038457,Puri,19.81413,85.83332,F-bg034,other,,power cut for two hours yesterday
+coincidental,F-B035,2026-09-11T10:40:47.156578,Berhampur,19.31542,84.78254,F-bg035,other,,power cut for two hours yesterday
+coincidental,F-B036,2026-09-03T05:06:04.506566,Bhubaneswar,20.2943,85.81928,F-bg036,other,,power cut for two hours yesterday
+coincidental,F-B037,2026-09-02T14:53:50.397633,Jajpur,20.85274,86.33078,F-bg037,other,,school timings changed this week
+coincidental,F-B038,2026-09-03T13:52:49.919386,Jajpur,20.84974,86.32448,F-bg038,diarrhoea_symptoms,,several people in our lane have loose motions
+coincidental,F-B039,2026-09-06T13:20:05.884714,Puri,19.81874,85.8255,F-bg039,water_colour,,water looks yellowish from the tap
+coincidental,F-E00,2026-09-04T14:00:00,Cuttack,20.45613,85.88378,F-src00,diarrhoea_symptoms,community_feast,stomach upset after drinking tap water
+coincidental,F-E01,2026-09-04T16:12:00,Cuttack,20.45378,85.87609,F-src01,diarrhoea_symptoms,community_feast,stomach upset after drinking tap water
+coincidental,F-E02,2026-09-04T18:24:00,Cuttack,20.46143,85.88081,F-src02,diarrhoea_symptoms,community_feast,several people in our lane have loose motions
+coincidental,F-E03,2026-09-04T20:36:00,Cuttack,20.45202,85.88162,F-src03,diarrhoea_symptoms,community_feast,stomach upset after drinking tap water
+coincidental,F-E04,2026-09-04T22:48:00,Cuttack,20.45202,85.88015,F-src04,diarrhoea_symptoms,community_feast,several people in our lane have loose motions
+coincidental,F-E05,2026-09-05T01:00:00,Cuttack,20.45223,85.87169,F-src05,diarrhoea_symptoms,community_feast,several people in our lane have loose motions
+coincidental,F-E06,2026-09-05T03:12:00,Cuttack,20.45827,85.88849,F-src06,diarrhoea_symptoms,community_feast,several people in our lane have loose motions
+coincidental,F-E07,2026-09-05T05:24:00,Cuttack,20.46142,85.87115,F-src07,diarrhoea_symptoms,community_feast,several people in our lane have loose motions
