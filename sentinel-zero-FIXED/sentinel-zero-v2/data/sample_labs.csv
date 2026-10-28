@@ -1,3 +1,0 @@
-scenario,id,timestamp,locality,lat,lon,result,agent
-true_cluster,T-LAB1,2026-09-02T18:00:00,Jajpur,20.85,86.33,positive,Vibrio cholerae (synthetic)
-coincidental,F-LAB1,2026-09-04T18:00:00,Cuttack,20.46,85.88,negative,Vibrio cholerae (synthetic)
