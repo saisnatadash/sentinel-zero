@@ -69,7 +69,7 @@ Open <http://localhost:8000> and choose a scenario.
 python -m pytest -q
 ```
 
-Expected: `27 passed`.
+Expected: `32 passed` (19 feature tests, 8 pipeline tests, 5 live-feed tests).
 
 ### Regenerate the sample data
 
