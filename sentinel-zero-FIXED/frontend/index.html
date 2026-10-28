@@ -106,9 +106,27 @@
     nav button { font-size: 13px; padding: 7px 11px; }
     .banner { font-size: 13px; padding: 8px 14px; }
   }
+
+  /* ---- loading screen ---- */
+  #splash { position: fixed; inset: 0; z-index: 2000; display: flex; flex-direction: column; align-items: center; justify-content: center;
+            background: linear-gradient(160deg, #0b2a55, var(--navy)); color: #fff; transition: opacity .4s ease; }
+  #splash.hide { opacity: 0; pointer-events: none; }
+  #splash img { height: 84px; background: #fff; border-radius: 16px; padding: 6px; box-shadow: 0 8px 30px rgba(0,0,0,.3); }
+  #splash h2 { margin: 18px 0 4px; font-size: 22px; letter-spacing: .6px; }
+  #splash p { margin: 0; opacity: .85; font-size: 14px; }
+  .spinner { margin-top: 26px; width: 42px; height: 42px; border-radius: 50%; border: 4px solid rgba(255,255,255,.25);
+             border-top-color: #F4A261; animation: spin .9s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @media (prefers-reduced-motion: reduce) { .spinner { animation-duration: 3s; } }
 </style>
 </head>
 <body>
+<div id="splash" role="status" aria-live="polite">
+  <img src="logo.png" alt="">
+  <h2>SENTINEL ZERO</h2>
+  <p id="splashText">Loading live reports…</p>
+  <div class="spinner" aria-hidden="true"></div>
+</div>
 <header>
   <img src="logo.png" alt="SENTINEL ZERO logo">
   <div>
@@ -816,7 +834,9 @@ async function loadExport() {
 loadLocalities();
 getJSON('/api/methodology').then(m => thresholds = m.thresholds).catch(() => {});
 loadScenarios();
-loadLive();
+function hideSplash() { const sp = document.getElementById('splash'); if (sp) { sp.classList.add('hide'); setTimeout(() => sp.remove(), 450); } }
+setTimeout(hideSplash, 6000);   // never keep visitors waiting longer than six seconds
+loadLive().then(hideSplash).catch(() => { document.getElementById('splashText').textContent = 'Could not reach the server. Please refresh.'; });
 document.getElementById('budget').onchange = () => loadWater();
 </script>
 </body>
