@@ -68,6 +68,44 @@
     #map { height: 400px; }
     section { padding:12px 16px; }
   }
+
+  /* ---- UI polish ---- */
+  header { box-shadow: 0 2px 10px rgba(11,42,85,.25); }
+  nav { position: sticky; top: 0; z-index: 900; overflow-x: auto; flex-wrap: nowrap; white-space: nowrap; scrollbar-width: thin; }
+  nav button { flex: 0 0 auto; transition: background .15s, color .15s; }
+  nav button:hover:not(.on) { background: #E8F0FA; }
+  nav button:focus-visible, .pill:focus-visible, button.action:focus-visible, select:focus-visible, textarea:focus-visible, a.btn:focus-visible {
+    outline: 3px solid #F4A261; outline-offset: 2px; }
+  .stats { gap: 10px; }
+  .stat { border-top: 3px solid var(--blue); background: #fff; box-shadow: 0 1px 2px rgba(16,24,40,.06); }
+  .stat:nth-child(2) { border-top-color: var(--green); }
+  .stat:nth-child(3) { border-top-color: var(--amber); }
+  .stat:nth-child(4) { border-top-color: var(--red); }
+  .stat b { font-variant-numeric: tabular-nums; }
+  .card { transition: box-shadow .15s; }
+  .card:hover { box-shadow: 0 4px 14px rgba(16,24,40,.08); }
+  .panel h4:first-child { margin-top: 0; }
+  .empty { text-align: center; padding: 22px 14px; color: var(--grey); font-size: 14px; background: var(--soft);
+           border: 1px dashed #C7D7E8; border-radius: 10px; }
+  .empty b { display: block; color: var(--navy); font-size: 15px; margin-bottom: 4px; }
+  .feed-item:hover { background: #FAFCFF; }
+  .feed-item { padding: 10px 6px; border-radius: 8px; }
+  textarea { line-height: 1.5; }
+  textarea:focus, select:focus, input:focus { border-color: var(--blue); outline: none; box-shadow: 0 0 0 3px rgba(0,119,182,.15); }
+  .map-legend b { display:block; margin-top:4px; }
+  .map-legend .note-line { color:#475467; font-size:11px; max-width:190px; }
+  @media (max-width: 600px) {
+    header { padding: 10px 14px; }
+    header h1 { font-size: 18px; }
+    header img { height: 36px; }
+    section { padding: 12px 12px; }
+    .stats { grid-template-columns: repeat(2,1fr); }
+    .stat b { font-size: 19px; }
+    .panel { padding: 12px; }
+    nav { padding: 8px 12px; }
+    nav button { font-size: 13px; padding: 7px 11px; }
+    .banner { font-size: 13px; padding: 8px 14px; }
+  }
 </style>
 </head>
 <body>
@@ -75,7 +113,7 @@
   <img src="logo.png" alt="SENTINEL ZERO logo">
   <div>
     <h1>SENTINEL ZERO</h1>
-    <small>Detect the signal. Verify the threat. Enable earlier action. · Team Sentinel · HSC|OR|00060 · Odisha</small>
+    <small>Detect the signal. Verify the threat. Enable earlier action. · Team Sentinel · HSC|OR|00084 · Odisha</small>
   </div>
 </header>
 <div class="banner"><b>Prototype.</b> Scenarios and simulated posts are synthetic. Live posts are kept in memory and are not moderated. Output flags patterns for human investigation. It does not confirm outbreaks or certify water safety.</div>
@@ -325,7 +363,12 @@ async function loadLive() {
     .forEach(([v, label]) => { const b = el('div', undefined, 'stat'); b.appendChild(el('b', String(v))); b.appendChild(el('small', label)); stats.appendChild(b); });
 
   const feed = document.getElementById('liveFeed'); clear(feed);
-  if (!d.reports.length) feed.appendChild(el('p', 'No posts yet. Be the first to post a report.', 'note'));
+  if (!d.reports.length) {
+    const empty = el('div', undefined, 'empty');
+    empty.appendChild(el('b', 'The feed is empty'));
+    empty.appendChild(el('span', 'Post the first report using the form on the left.'));
+    feed.appendChild(empty);
+  }
   d.reports.slice().reverse().slice(0, 25).forEach(r => {
     const row = el('div', undefined, 'feed-item');
     const tag = el('span', CAT_LABEL[r.category], 'tag');
@@ -339,7 +382,10 @@ async function loadLive() {
 
   const flags = document.getElementById('liveFlags'); clear(flags);
   if (!d.result.clusters.length) {
-    flags.appendChild(el('div', 'No cluster yet. A flag needs at least four posts from distinct sources close together in space and time.', 'flag-note'));
+    const empty = el('div', undefined, 'empty');
+    empty.appendChild(el('b', 'No flags yet'));
+    empty.appendChild(el('span', 'A flag needs at least four posts from distinct sources, close together in space and time. Try the demonstration controls on the left.'));
+    flags.appendChild(empty);
   } else {
     clusterCards(d.result, flags);
   }
@@ -547,6 +593,7 @@ if (window.L) {
       row.appendChild(sw); row.appendChild(document.createTextNode(CAT_LABEL[c])); box.appendChild(row);
     });
     box.appendChild(el('b', 'Cluster tier (areas)'));
+    box.appendChild(el('div', 'Darker shading = higher confidence', 'note-line'));
     TIERS.forEach(t => {
       const row = el('div'); const sw = el('span', undefined, 'sw'); sw.style.background = TIER_COLOUR[t];
       row.appendChild(sw); row.appendChild(document.createTextNode(t)); box.appendChild(row);
